@@ -24,9 +24,9 @@
               <th>Name</th>
               <th>Type</th>
               <th>Description</th>
-              <th>location</th>
-              <th>comments</th>
-              <th>status</th>
+              <th>Location</th>
+              <th>Comments</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody id='tbody'>
@@ -69,13 +69,13 @@
         console.log(actual_JSON);
         actual_JSON.forEach(data => {
           document.getElementById('tbody').innerHTML += '<tr>' +
-            '<td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.userId + '</td><td>' + data.body + '</td>' +
-            '</tr>'
-
+            '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type + '</td><td>' + data.description + '</td><td>' + data.location + '</td><td>' + data.comments + '</td><td>' + data.status + '</td>'
+          '</tr>'
         })
       });
     }
     init();
   </script>
 </body>
+
 </html>
