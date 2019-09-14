@@ -12,7 +12,7 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6 offset-3">
+      <div class="col-lg-8 offset-2">
         <h1 class="display-5 text-center">Issues Table</h1> <br>
         <table class="table table-striped">
           <thead>
@@ -24,6 +24,8 @@
               <th>Location</th>
               <th>Comments</th>
               <th>Status</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody id='tbody'>
@@ -63,12 +65,26 @@
         console.log(actual_JSON);
         actual_JSON.forEach(data => {
           document.getElementById('tbody').innerHTML += '<tr>' +
-            '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type + '</td><td>' + data.description + '</td><td>' + data.location + '</td><td>' + data.comments + '</td><td>' + data.status + '</td>'
-          '</tr>'
+            '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type + 
+            '</td><td>' + data.description + '</td><td>' + data.location + 
+            '</td><td>' + data.comments + '</td><td>' + data.status + 
+            // '</td><td>' + '<button type="button" class="btn btn-secondary">Edit</button>' + '</td><td>' + '<button type="button" class="btn btn-danger">Delete</button>' +
+            '</td><td>' + '<div class="btn-group" role="group" aria-label="Basic example">' +
+                              '<button type="button" class="btn btn-secondary onclick="myEdit()">Edit</button>' +
+                              '<button type="button" class="btn btn-danger" onclick="myDelete()">Delete</button>'+
+                          '</div>' +
+            '</td>' + 
+            '</tr>'
         })
       });
     }
     init();
+    function myDelete(){
+      console.log("editted");
+    }
+    function myDelete(){
+      console.log("deleted");
+    }
   </script>
 </body>
 </html>
