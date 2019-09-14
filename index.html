@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>Issues Table</title>
   <!-- Required meta tags -->
@@ -9,7 +10,28 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalBox"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalBox">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8 offset-2">
@@ -65,26 +87,27 @@
         console.log(actual_JSON);
         actual_JSON.forEach(data => {
           document.getElementById('tbody').innerHTML += '<tr>' +
-            '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type + 
-            '</td><td>' + data.description + '</td><td>' + data.location + 
-            '</td><td>' + data.comments + '</td><td>' + data.status + 
+            '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type +
+            '</td><td>' + data.description + '</td><td>' + data.location +
+            '</td><td>' + data.comments + '</td><td>' + data.status +
             // '</td><td>' + '<button type="button" class="btn btn-secondary">Edit</button>' + '</td><td>' + '<button type="button" class="btn btn-danger">Delete</button>' +
-            '</td><td>' + '<div class="btn-group" role="group" aria-label="Basic example">' +
-                              '<button type="button" class="btn btn-secondary onclick="myEdit()">Edit</button>' +
-                              '<button type="button" class="btn btn-danger" onclick="myDelete()">Delete</button>'+
-                          '</div>' +
-            '</td>' + 
+            '</td><td>' + '<div class="btn-group" role="group" aria-label="edit/delete button">' +
+            '<button type="button" class="btn btn-secondary" onclick="myEd()" data-toggle="modal" data-target="#editModal">Edit</button>' +
+            '<button type="button" class="btn btn-danger" onclick="myDelete()">Delete</button>' +
+            '</div>' +
+            '</td>' +
             '</tr>'
         })
       });
     }
     init();
-    function myDelete(){
+    function myEd() {
       console.log("editted");
     }
-    function myDelete(){
+    function myDelete() {
       console.log("deleted");
     }
   </script>
 </body>
+
 </html>
