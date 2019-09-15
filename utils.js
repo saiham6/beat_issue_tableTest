@@ -1,4 +1,3 @@
-'use-strict'
 class Utils {
   constructor() {
   }
