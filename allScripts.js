@@ -19,7 +19,7 @@ async function init() {
 init();
 function generateForm() {
   document.getElementById("modalInfo").innerHTML =
-    '<form>' +
+    '<form class="customForm">' +
     '<div class="form-group">' + '<label for="issueId">' + 'Issue ID' + '</label>' +
     '<input type="text" class="form-control" id="issueIdInput" placeholder="ID number">' +
     '</div>' +
@@ -65,6 +65,7 @@ async function deleteIssue() {
     document.getElementById("editModalTitle").innerHTML = "Warning";
     document.getElementById("modalInfo").innerHTML = "Are you sure you want to delete the Issue with ID?";
     var del = document.getElementById("submitBtn");
+    del.type = "submit";
     del.className = "btn btn-danger";
     del.innerHTML = "Delete";
 }

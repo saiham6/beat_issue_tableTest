@@ -8,15 +8,10 @@ class Issues {
     this.generateForm();
   }
   edit(issue) {
-    
+
   }
   delete(id) {
-    // console.log("deleted");
-    // document.getElementById("editModalTitle").innerHTML = "Warning";
-    // document.getElementById("modalInfo").innerHTML = "Are you sure you want to delete the Issue with ID " + id + "?";
-    // var del = document.getElementById("submitBtn");
-    // del.className = "btn btn-danger";
-    // del.innerHTML = "Delete";
+    
   }
   get(id) {
 
