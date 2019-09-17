@@ -4,11 +4,15 @@ class Issues {
     this.util = new Utils();
   }
   add(issue) {
-    document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
-    this.generateForm();
+    this.issues.push(issue);
+    this.updateIssuesFile(issue);
   }
-  edit(issue) {
+  updateIssuesFile(){
+    JSON.save(this.issues, 'data.json');
+  }
 
+  edit(issue) {
+    
   }
   delete(id) {
     
