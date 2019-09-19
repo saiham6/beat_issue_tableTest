@@ -1,6 +1,6 @@
 async function init() {
   let issues = new Issues();
-  await issues.getIssuesFromFile();
+  await issues.getIssuesFromFile('data.JSON');
   let data = issues.getAll();
   data.forEach(data => {
     document.getElementById('tbody').innerHTML +=
@@ -62,11 +62,13 @@ async function addIssue() {
       comments: document.getElementById('issuesComInput').value,
       status: document.getElementById('issueStatInput').value
     };
-    console.log(
-    (JSON.stringify(issue)));
+    JSON.stringify(issue);
   };
-  // newIssue = "some data";
-  issues.add(/*new issue*/); //will pass the new issue to the JSON file
+  let issues = new Issues();
+  await issues.getIssuesFromFile('data.JSON');
+  let data = issues.getAll();
+  console.log(data);
+  
 }
 async function editIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to EDIT";

@@ -7,8 +7,8 @@ class Issues {
     this.issues.push(issue);
     this.updateIssuesFile(issue);
   }
-  updateIssuesFile(){
-    JSON.save(this.issues, 'data.json');
+  updateIssuesFile(file){
+    JSON.save(this.issues, file);
   }
 
   edit(issue) {
@@ -23,7 +23,7 @@ class Issues {
   getAll() {
     return this.issues;
   }
-  async getIssuesFromFile() {
-    this.issues = await this.util.loadJSON('data.json');
+  async getIssuesFromFile(file) {
+    this.issues = await this.util.loadJSON(file);
   }
 }
