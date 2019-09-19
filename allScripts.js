@@ -68,7 +68,6 @@ async function addIssue() {
   await issues.getIssuesFromFile('data.JSON');
   let data = issues.getAll();
   console.log(data);
-  
 }
 async function editIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to EDIT";
