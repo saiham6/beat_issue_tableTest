@@ -45,6 +45,10 @@ class Issues {
   getAll() {
     return this.issues;
   }
+  /**
+   * *This will read the JSON file
+   * @param {JSON} file The file to be read
+   */
   async getIssuesFromFile(file) {
     this.issues = await this.util.loadJSON(file);
   }
