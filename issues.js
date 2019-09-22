@@ -18,7 +18,7 @@ class Issues {
    * @param {JSON} file      The file to be written to.
    */
   writeToFile(jsonObj,file){
-
+    
   }
   /**
    ** Will update the current json file with the new values

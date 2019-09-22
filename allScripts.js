@@ -2,6 +2,9 @@ async function init() {
   let issues = new Issues();
   await issues.getIssuesFromFile('data.JSON');
   let data = issues.getAll();
+  console.log(data);
+  
+  localStorage.setItem('issues', JSON.stringify(data));
   data.forEach(data => {
     document.getElementById('tbody').innerHTML +=
       '<tr>' +
@@ -52,6 +55,10 @@ function generateForm() {
 async function addIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
   generateForm();
+  let data = localStorage.getItem('issues');
+  data = JSON.parse(data);
+  window.idata = data;
+  
   document.getElementById('submitBtn').onclick = function() { 
     let issue = {
       id: document.getElementById('issueIdInput').value,
@@ -62,12 +69,20 @@ async function addIssue() {
       comments: document.getElementById('issuesComInput').value,
       status: document.getElementById('issueStatInput').value
     };
-    JSON.stringify(issue);
+    data.push(issue);
+    console.log(data);
   };
-  let issues = new Issues();
-  await issues.getIssuesFromFile('data.JSON');
-  let data = issues.getAll();
-  console.log(data);
+  
+  // var fs = require('fs');
+  // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
+
+
+
+
+
+
+//  var json = JSON.stringify(obj);
+ 
 }
 async function editIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to EDIT";
@@ -94,9 +109,17 @@ async function deleteIssue() {
 
 
 
+
+
+
+
+
+
+
+
 /** 
   ** function to get the specific table row info in modal 
-  * @param {jsonObject} jsonObject    Sends the JSON file
+  * @param {Object} jsonObject    Sends the JSON file
   * @param {Integer} id               Finds the the specific object by ID
   * @return {Object}                  Returns the found object
 */
