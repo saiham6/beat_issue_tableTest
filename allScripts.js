@@ -4,7 +4,7 @@ async function init() {
   let data = issues.getAll();
   console.log(data);
   
-  localStorage.setItem('issues', JSON.stringify(data));
+  // localStorage.setItem('issues', JSON.stringify(data));
   data.forEach(data => {
     document.getElementById('tbody').innerHTML +=
       '<tr>' +
@@ -71,8 +71,26 @@ async function addIssue() {
     };
     data.push(issue);
     console.log(data);
+    localStorage.setItem('issues', JSON.stringify(data));
+    init2();
   };
-  
+
+  function init2(){
+    newData = JSON.parse(localStorage.getItem('issues'));
+    data.forEach(data => {
+      document.getElementById('tbody').innerHTML +=
+        '<tr>' +
+        '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type +
+        '</td><td>' + data.description + '</td><td>' + data.location +
+        '</td><td>' + data.comments + '</td><td>' + data.status +
+        '</td><td>' + '<div class="btn-group" role="group" aria-label="edit/delete button">' +
+        '<button type="button" class="btn btn-secondary" onclick="editIssue()" data-toggle="modal" data-target="#editModal">Edit</button>' +
+        '<button type="button" class="btn btn-danger" onclick="deleteIssue()" data-toggle="modal" data-target="#editModal">Delete</button>' +
+        '</div>' +
+        '</td>' +
+        '</tr>';
+    });
+  }  
   // var fs = require('fs');
   // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
 
