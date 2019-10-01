@@ -4,7 +4,7 @@ async function init() {
   let data = issues.getAll();
   console.log(data);
   
-  // localStorage.setItem('issues', JSON.stringify(data));
+  localStorage.setItem('issues', JSON.stringify(data));
   data.forEach(data => {
     document.getElementById('tbody').innerHTML +=
       '<tr>' +
@@ -20,38 +20,6 @@ async function init() {
   });
 }
 init();
-function generateForm() {
-  document.getElementById("modalInfo").innerHTML =
-    '<div class="customForm">' +
-    '<div class="form-group">' + '<label for="issueId">' + 'Issue ID' + '</label>' +
-    '<input type="text" class="form-control" id="issueIdInput" placeholder="ID number">' +
-    '</div>' +
-    '<div class="form-group">' + '<label for="issueName">' + 'Name the Issue' + '</label>' +
-    '<input type="text" class="form-control" id="issueNameInput" placeholder="Name">' +
-    '</div>' +
-    '<div class="form-group">' + '<label for="issueType">' + 'Type of Issue' + '</label>' +
-    '<input type="text" class="form-control" id="issueTypeInput" placeholder="Issue Type">' +
-    '</div>' +
-    `<div class="form-group">
-    <label for="issuesDes">Describe the Issue</label>
-    <textarea class="form-control" placeholder="Please describe the issue" id="issuesDesInput" rows="3"></textarea>
-    </div>` +
-    '</div>' +
-    '<div class="form-group">' + '<label for="issuesLoc">' + 'Where did you find the issue?' + '</label>' +
-    '<input type="text" class="form-control" id="issuesLocInput" placeholder="Location">' +
-    '</div>' +
-    `<div class="form-group">
-    <label for="issuesCom">Comments</label>
-    <textarea class="form-control" placeholder="Any Comments?" id="issuesComInput" rows="3"></textarea>
-    </div>` +
-    '<div class="form-group">' + '<label for="issueStat">' + 'Status of the issue?' + '</label>' +
-    '<input type="text" class="form-control" id="issueStatInput" placeholder="Status">' +
-    '</div>' +
-    '</div>';
-  var btn = document.getElementById("submitBtn");
-  btn.className = "btn btn-primary";
-  btn.innerHTML = "Save";
-}
 async function addIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
   generateForm();

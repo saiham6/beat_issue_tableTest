@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <!-- ?Modal Elements -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalBox" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -22,6 +23,40 @@
           </button>
         </div>
         <div class="modal-body" id="modalInfo">
+          <script>
+            function generateForm() {
+              document.getElementById("modalInfo").innerHTML =
+                '<div class="customForm">' +
+                '<div class="form-group">' + '<label for="issueId">' + 'Issue ID' + '</label>' +
+                '<input type="text" class="form-control" id="issueIdInput" placeholder="ID number">' +
+                '</div>' +
+                '<div class="form-group">' + '<label for="issueName">' + 'Name the Issue' + '</label>' +
+                '<input type="text" class="form-control" id="issueNameInput" placeholder="Name">' +
+                '</div>' +
+                '<div class="form-group">' + '<label for="issueType">' + 'Type of Issue' + '</label>' +
+                '<input type="text" class="form-control" id="issueTypeInput" placeholder="Issue Type">' +
+                '</div>' +
+                `<div class="form-group">
+                <label for="issuesDes">Describe the Issue</label>
+                <textarea class="form-control" placeholder="Please describe the issue" id="issuesDesInput" rows="3"></textarea>
+                </div>` +
+                '</div>' +
+                '<div class="form-group">' + '<label for="issuesLoc">' + 'Where did you find the issue?' + '</label>' +
+                '<input type="text" class="form-control" id="issuesLocInput" placeholder="Location">' +
+                '</div>' +
+                `<div class="form-group">
+                <label for="issuesCom">Comments</label>
+                <textarea class="form-control" placeholder="Any Comments?" id="issuesComInput" rows="3"></textarea>
+                </div>` +
+                '<div class="form-group">' + '<label for="issueStat">' + 'Status of the issue?' + '</label>' +
+                '<input type="text" class="form-control" id="issueStatInput" placeholder="Status">' +
+                '</div>' +
+                '</div>';
+              var btn = document.getElementById("submitBtn");
+              btn.className = "btn btn-primary";
+              btn.innerHTML = "Save";
+            }
+          </script>
           ...
         </div>
         <div class="modal-footer">
@@ -31,6 +66,7 @@
       </div>
     </div>
   </div>
+  <!-- ?Body Elements -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8 offset-2">
@@ -39,17 +75,33 @@
           <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
             data-target="#editModal" class="btn btn-primary">Add Issue</button>
         </div> <br>
+        <!-- ?Table View -->
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>ID</th><th>Name</th><th>Type</th><th>Description</th><th>Location</th><th>Comments</th><th>Status</th><th></th><th></th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th>Comments</th>
+              <th>Status</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody id='tbody'>
           </tbody>
         </table>
-        <br> <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
+        <div class="h-10 row align-items-center">
+        <div class="col" style="text-align: end;">
+        <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
           data-target="#editModal" class="btn btn-primary">Add Issue</button>
+        </div>
+        <div class="col" style="text-align: start;">
+        <button type="button justify-content-center" id="refreshView" class="btn btn-warning" onclick="location.reload()">Refresh</button>
+        </div>
+        </div>
       </div>
     </div>
   </div>
@@ -64,7 +116,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  
+
   <script src="issues.js"></script>
   <script src="utils.js"></script>
   <script src="allScripts.js"></script>

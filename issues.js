@@ -11,6 +11,7 @@ class Issues {
     this.issues.push(issue);
     this.updateIssuesFile(issue);
     this.writeToFile(issue);
+    
   }
   /**
    * *This method will write the updated JSON file in session VM to the local file.
