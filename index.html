@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <!-- ?Modal Elements -->
+  <!-- Modal Elements -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalBox" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -66,7 +66,7 @@
       </div>
     </div>
   </div>
-  <!-- ?Body Elements -->
+  <!-- Body Elements -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8 offset-2">
@@ -75,7 +75,7 @@
           <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
             data-target="#editModal" class="btn btn-primary">Add Issue</button>
         </div> <br>
-        <!-- ?Table View -->
+        <!-- Table View -->
         <table class="table table-striped">
           <thead>
             <tr>
@@ -94,13 +94,14 @@
           </tbody>
         </table>
         <div class="h-10 row align-items-center">
-        <div class="col" style="text-align: end;">
-        <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
-          data-target="#editModal" class="btn btn-primary">Add Issue</button>
-        </div>
-        <div class="col" style="text-align: start;">
-        <button type="button justify-content-center" id="refreshView" class="btn btn-warning" onclick="location.reload()">Refresh</button>
-        </div>
+          <div class="col" style="text-align: end;">
+            <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
+              data-target="#editModal" class="btn btn-primary">Add Issue</button>
+          </div>
+          <div class="col" style="text-align: start;">
+            <button type="button justify-content-center" id="refreshView" class="btn btn-warning"
+              onclick="location.reload()">Refresh</button>
+          </div>
         </div>
       </div>
     </div>
@@ -108,14 +109,14 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
 
   <script src="issues.js"></script>
   <script src="utils.js"></script>
