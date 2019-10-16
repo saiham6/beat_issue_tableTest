@@ -72,7 +72,7 @@
       <div class="col-lg-8 offset-2">
         <h1 class="display-5 text-center">Issues Table</h1> <br>
         <div class="float-right">
-          <button type="button justify-content-center" id="addIssue" onclick="addIssue()" data-toggle="modal"
+          <button type="button justify-content-center" id="addIssue" onclick="addIssue2()" data-toggle="modal"
             data-target="#editModal" class="btn btn-primary">Add Issue</button>
         </div> <br>
         <!-- Table View -->
@@ -119,9 +119,7 @@
   </script>
 
   <script src="//cdn.jsdelivr.net/npm/pouchdb@7.1.1/dist/pouchdb.min.js"></script>
-  <script>
-    var db = new PouchDB('my_database');
-  </script>
+  <script src="clientDB.js"></script>
   <script src="issues.js"></script>
   <script src="utils.js"></script>
   <script src="allScripts.js"></script>

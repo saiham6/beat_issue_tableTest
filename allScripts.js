@@ -3,6 +3,7 @@ async function init() {
   await issues.getIssuesFromFile('data.JSON');
   let data = issues.getAll();
   console.log(data);
+  window.idata = data;
   
   localStorage.setItem('issues', JSON.stringify(data));
   data.forEach(data => {
@@ -20,16 +21,13 @@ async function init() {
   });
 }
 init();
-async function addIssue() {
+async function addIssue2() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
   generateForm();
-  let data = localStorage.getItem('issues');
-  data = JSON.parse(data);
-  window.idata = data;
   
   document.getElementById('submitBtn').onclick = function() { 
     let issue = {
-      id: document.getElementById('issueIdInput').value,
+      _id: document.getElementById('issueIdInput').value,
       name: document.getElementById('issueNameInput').value,
       type: document.getElementById('issueTypeInput').value,
       description: document.getElementById('issuesDesInput').value,
@@ -37,11 +35,37 @@ async function addIssue() {
       comments: document.getElementById('issuesComInput').value,
       status: document.getElementById('issueStatInput').value
     };
-    data.push(issue);
-    console.log(data);
-    localStorage.setItem('issues', JSON.stringify(data));
-    init2();
+    db.put(issue, function(err, response) {
+      if (err) {
+         return console.log(err);
+      } else {
+         console.log("Document created Successfully");
+      }
+   });
   };
+  async function addIssue() {
+    document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
+    generateForm();
+    let data = localStorage.getItem('issues');
+    data = JSON.parse(data);
+    window.idata = data;
+    
+    document.getElementById('submitBtn').onclick = function() { 
+      let issue = {
+        id: document.getElementById('issueIdInput').value,
+        name: document.getElementById('issueNameInput').value,
+        type: document.getElementById('issueTypeInput').value,
+        description: document.getElementById('issuesDesInput').value,
+        location: document.getElementById('issuesLocInput').value,
+        comments: document.getElementById('issuesComInput').value,
+        status: document.getElementById('issueStatInput').value
+      };
+      data.push(issue);
+      console.log(data);
+      localStorage.setItem('issues', JSON.stringify(data));
+      init2();
+    };
+  }
 
   function init2(){
     newData = JSON.parse(localStorage.getItem('issues'));
