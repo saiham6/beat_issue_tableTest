@@ -1,3 +1,4 @@
+let cdb = new clientDB();
 async function init() {
   let issues = new Issues();
   await issues.getIssuesFromFile('data.JSON');
