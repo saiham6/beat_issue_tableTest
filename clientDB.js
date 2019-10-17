@@ -58,6 +58,7 @@ class clientDB {
    * @param {String} revID database document id
    */
   updateData(revID) {
+    console.log("Document update success");
     
   }
 
