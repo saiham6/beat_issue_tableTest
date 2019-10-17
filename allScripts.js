@@ -35,54 +35,49 @@ async function addIssue2() {
       comments: document.getElementById('issuesComInput').value,
       status: document.getElementById('issueStatInput').value
     };
-    db.put(issue, function(err, response) {
-      if (err) {
-         return console.log(err);
-      } else {
-         console.log("Document created Successfully");
-      }
-   });
+    pushData(issue);
   };
-  async function addIssue() {
-    document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
-    generateForm();
-    let data = localStorage.getItem('issues');
-    data = JSON.parse(data);
-    window.idata = data;
-    
-    document.getElementById('submitBtn').onclick = function() { 
-      let issue = {
-        id: document.getElementById('issueIdInput').value,
-        name: document.getElementById('issueNameInput').value,
-        type: document.getElementById('issueTypeInput').value,
-        description: document.getElementById('issuesDesInput').value,
-        location: document.getElementById('issuesLocInput').value,
-        comments: document.getElementById('issuesComInput').value,
-        status: document.getElementById('issueStatInput').value
-      };
-      data.push(issue);
-      console.log(data);
-      localStorage.setItem('issues', JSON.stringify(data));
-      init2();
+}
+async function addIssue() {
+  document.getElementById("editModalTitle").innerHTML = "Please input what you want to ADD";
+  generateForm();
+  let data = localStorage.getItem('issues');
+  data = JSON.parse(data);
+  window.idata = data;
+  
+  document.getElementById('submitBtn').onclick = function() { 
+    let issue = {
+      id: document.getElementById('issueIdInput').value,
+      name: document.getElementById('issueNameInput').value,
+      type: document.getElementById('issueTypeInput').value,
+      description: document.getElementById('issuesDesInput').value,
+      location: document.getElementById('issuesLocInput').value,
+      comments: document.getElementById('issuesComInput').value,
+      status: document.getElementById('issueStatInput').value
     };
-  }
+    data.push(issue);
+    console.log(data);
+    localStorage.setItem('issues', JSON.stringify(data));
+    init2();
+  };
+}
 
-  function init2(){
-    newData = JSON.parse(localStorage.getItem('issues'));
-    data.forEach(data => {
-      document.getElementById('tbody').innerHTML +=
-        '<tr>' +
-        '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type +
-        '</td><td>' + data.description + '</td><td>' + data.location +
-        '</td><td>' + data.comments + '</td><td>' + data.status +
-        '</td><td>' + '<div class="btn-group" role="group" aria-label="edit/delete button">' +
-        '<button type="button" class="btn btn-secondary" onclick="editIssue()" data-toggle="modal" data-target="#editModal">Edit</button>' +
-        '<button type="button" class="btn btn-danger" onclick="deleteIssue()" data-toggle="modal" data-target="#editModal">Delete</button>' +
-        '</div>' +
-        '</td>' +
-        '</tr>';
-    });
-  }  
+function init2(){
+  newData = JSON.parse(localStorage.getItem('issues'));
+  data.forEach(data => {
+    document.getElementById('tbody').innerHTML +=
+      '<tr>' +
+      '<td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.type +
+      '</td><td>' + data.description + '</td><td>' + data.location +
+      '</td><td>' + data.comments + '</td><td>' + data.status +
+      '</td><td>' + '<div class="btn-group" role="group" aria-label="edit/delete button">' +
+      '<button type="button" class="btn btn-secondary" onclick="editIssue()" data-toggle="modal" data-target="#editModal">Edit</button>' +
+      '<button type="button" class="btn btn-danger" onclick="deleteIssue()" data-toggle="modal" data-target="#editModal">Delete</button>' +
+      '</div>' +
+      '</td>' +
+      '</tr>';
+  });
+};  
   // var fs = require('fs');
   // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
 
@@ -93,7 +88,6 @@ async function addIssue2() {
 
 //  var json = JSON.stringify(obj);
  
-}
 async function editIssue() {
   document.getElementById("editModalTitle").innerHTML = "Please input what you want to EDIT";
   generateForm();
@@ -109,7 +103,7 @@ async function deleteIssue() {
     var del = document.getElementById("submitBtn");
     del.className = "btn btn-danger";
     del.innerHTML = "Delete";
-}
+} 
 
 
 
