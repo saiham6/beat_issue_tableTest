@@ -1,5 +1,4 @@
 class clientDB {
-
   // TODO: Create
 
   constructor() {
@@ -7,6 +6,17 @@ class clientDB {
      * An instance of pouchDB in indexedDB
      */
     this.db = new PouchDB("my_database");
+    /** JSON objects are saved here as array */
+    this.documents = [];
+    this.util = new Utils();
+  }
+
+  /**
+   * Reads the JSON file and sets to documents.
+   * @param {JSON} file JSON file to be read.
+   */
+  async getJSONdata(file) {
+    this.documents = await this.util.loadJSON(file);
   }
 
   // TODO: Read
@@ -33,6 +43,7 @@ class clientDB {
         return console.log(err);
       } else {
         console.log(docs.rows);
+        // return docs.rows;
       }
     });
   }
@@ -54,12 +65,11 @@ class clientDB {
   }
 
   /**
-   * Updates the document by tits revID given by the database
+   * Updates the document by it's revID given by the database
    * @param {String} revID database document id
    */
   updateData(revID) {
     console.log("Document update success");
-    
   }
 
   // TODO: Delete
