@@ -6,8 +6,10 @@ class clientDB {
      * An instance of pouchDB in indexedDB
      */
     this.db = new PouchDB("my_database");
-    /** JSON objects are saved here as array */
+    /** JSON objects from JSON file are saved here as array */
     this.documents = [];
+    /** pouchDB documents */
+    this.dbDoc = [];
     this.util = new Utils();
   }
 
@@ -37,15 +39,24 @@ class clientDB {
   /**
    * Returns all the documents stored in pouchDB
    */
-  getAll() {
-    this.db.allDocs(function(err, docs) {
-      if (err) {
-        return console.log(err);
-      } else {
-        console.log(docs.rows);
-        // return docs.rows;
-      }
-    });
+  async getAll() {
+    let instance = this;
+    this.db
+      .allDocs({
+        include_docs: true,
+        attachments: true
+      })
+      .then(function(result) {
+        let docs = result.rows;
+        docs.forEach(data => {
+          instance.dbDoc.push(data.doc);
+        });
+        console.log("pouchDB class doc");
+        console.log(instance.dbDoc);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   // TODO: Update
