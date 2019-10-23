@@ -38,13 +38,14 @@ async function init() {
           data.comments +
           "</td><td>" +
           data.status +
-          "</td><td>" +
-          '<div class="btn-group" role="group" aria-label="edit/delete button">' +
-          '<button type="button" class="btn btn-secondary" onclick="editIssue()" data-toggle="modal" data-target="#editModal">Edit</button>' +
-          '<button type="button" class="btn btn-danger" onclick="deleteIssue()" data-toggle="modal" data-target="#editModal">Delete</button>' +
-          "</div>" +
           "</td>" +
-          "</tr>";
+          `<td>
+            <div id="data-id-${data._id}" class="btn-group" role="group" aria-label="edit/delete button">
+            <button type="button" class="btn btn-secondary" onclick="editIssue(${data._id})" data-toggle="modal" data-target="#editModal">Edit</button>
+          <button type="button" class="btn btn-danger" onclick="deleteIssue(${data._id})" data-toggle="modal" data-target="#editModal">Delete</button>
+          </td>
+          </div>
+          </tr>`;
       });
     }
   });
@@ -84,12 +85,13 @@ async function editIssue() {
   editedIssue = issues.get(/*Id to be sent here*/);
   issues.edit(editedIssue); //will pass the new issue to the edit method
 }
-async function deleteIssue() {
+async function deleteIssue(param) {
   console.log("deleted");
   document.getElementById("editModalTitle").innerHTML = "Warning";
   document.getElementById("modalInfo").innerHTML =
-    "Are you sure you want to delete the Issue with ID?";
+    `Are you sure you want to delete the Issue with ID ${param}`;
   var del = document.getElementById("submitBtn");
   del.className = "btn btn-danger";
   del.innerHTML = "Delete";
+  // del.onclick = ;
 }
