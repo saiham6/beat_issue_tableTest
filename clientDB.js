@@ -39,7 +39,7 @@ class clientDB {
   /**
    * Returns all the documents stored in pouchDB
    */
-  async getAll() {
+  getAll(cb) {
     let instance = this;
     this.db
       .allDocs({
@@ -51,6 +51,7 @@ class clientDB {
         docs.forEach(data => {
           instance.dbDoc.push(data.doc);
         });
+        cb(true);
         console.log("pouchDB class doc");
         console.log(instance.dbDoc);
       })
@@ -88,9 +89,10 @@ class clientDB {
   /**
    * Deletes a document from database using id and revID
    * @param {String} id primary key
-   * @param {String} revID id by pouchDB
    */
-  deleteDoc(id, revID) {
+  deleteDoc(id) {
+    /** @param {String} revID id by pouchDB */
+    let revID = this.getRevID(id);
     this.db.remove(id, revID, function(err) {
       if (err) {
         return console.log(err);
@@ -111,7 +113,7 @@ class clientDB {
       if (err) {
         return console.log(err);
       } else {
-        console.log(doc._rev);
+       return doc._rev;
       }
     });
   }

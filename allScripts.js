@@ -11,43 +11,37 @@ async function init() {
   //     cdb.pushData(data);
   //   });
   // }
-  await cdb.getAll().then(function() {
-    console.log("hi");
-    console.log(cdb.dbDoc);
-    setTimeout(v, 50);
+  cdb.getAll(data => {
+    cdb.dbDoc.forEach(data => {
+      console.log("foreach");
 
-    function v() {
-      cdb.dbDoc.forEach(data => {
-        console.log("foreach");
+      console.log(data);
 
-        console.log(data);
-
-        document.getElementById("tbody").innerHTML +=
-          "<tr>" +
-          "<td>" +
-          data._id +
-          "</td><td>" +
-          data.name +
-          "</td><td>" +
-          data.type +
-          "</td><td>" +
-          data.description +
-          "</td><td>" +
-          data.location +
-          "</td><td>" +
-          data.comments +
-          "</td><td>" +
-          data.status +
-          "</td>" +
-          `<td>
+      document.getElementById("tbody").innerHTML +=
+        "<tr>" +
+        "<td>" +
+        data._id +
+        "</td><td>" +
+        data.name +
+        "</td><td>" +
+        data.type +
+        "</td><td>" +
+        data.description +
+        "</td><td>" +
+        data.location +
+        "</td><td>" +
+        data.comments +
+        "</td><td>" +
+        data.status +
+        "</td>" +
+        `<td>
             <div id="data-id-${data._id}" class="btn-group" role="group" aria-label="edit/delete button">
             <button type="button" class="btn btn-secondary" onclick="editIssue(${data._id})" data-toggle="modal" data-target="#editModal">Edit</button>
           <button type="button" class="btn btn-danger" onclick="deleteIssue(${data._id})" data-toggle="modal" data-target="#editModal">Delete</button>
           </td>
           </div>
           </tr>`;
-      });
-    }
+    });
   });
   console.log("allscripts");
 
@@ -88,10 +82,15 @@ async function editIssue() {
 async function deleteIssue(param) {
   console.log("deleted");
   document.getElementById("editModalTitle").innerHTML = "Warning";
-  document.getElementById("modalInfo").innerHTML =
-    `Are you sure you want to delete the Issue with ID ${param}`;
-  var del = document.getElementById("submitBtn");
+  document.getElementById(
+    "modalInfo"
+  ).innerHTML = `Are you sure you want to delete the Issue with ID ${param}`;
+  let del = document.getElementById("submitBtn");
   del.className = "btn btn-danger";
   del.innerHTML = "Delete";
-  // del.onclick = ;
+  del.onclick = function() {
+    console.log(`"${param}"`);
+    cdb.deleteDoc(`"${param}"`);
+    // location.reload();
+  };
 }
