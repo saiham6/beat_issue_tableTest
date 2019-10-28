@@ -14,33 +14,8 @@ async function init() {
   cdb.getAll(data => {
     cdb.dbDoc.forEach(data => {
       console.log("foreach");
-
+      loadView(data);
       console.log(data);
-
-      document.getElementById("tbody").innerHTML +=
-        "<tr>" +
-        "<td>" +
-        data._id +
-        "</td><td>" +
-        data.name +
-        "</td><td>" +
-        data.type +
-        "</td><td>" +
-        data.description +
-        "</td><td>" +
-        data.location +
-        "</td><td>" +
-        data.comments +
-        "</td><td>" +
-        data.status +
-        "</td>" +
-        `<td>
-            <div id="data-id-${data._id}" class="btn-group" role="group" aria-label="edit/delete button">
-            <button type="button" class="btn btn-secondary" onclick="editIssue(${data._id})" data-toggle="modal" data-target="#editModal">Edit</button>
-          <button type="button" class="btn btn-danger" onclick="deleteIssue(${data._id})" data-toggle="modal" data-target="#editModal">Delete</button>
-          </td>
-          </div>
-          </tr>`;
     });
   });
   console.log("allscripts");

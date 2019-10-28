@@ -37,17 +37,18 @@
                 '<input type="text" class="form-control" id="issueTypeInput" placeholder="Issue Type">' +
                 '</div>' +
                 `<div class="form-group">
-                <label for="issuesDes">Describe the Issue</label>
-                <textarea class="form-control" placeholder="Please describe the issue" id="issuesDesInput" rows="3"></textarea>
-                </div>` +
+                        <label for="issuesDes">Describe the Issue</label>
+                        <textarea class="form-control" placeholder="Please describe the issue" id="issuesDesInput" rows="3"></textarea>
+                        </div>` +
                 '</div>' +
-                '<div class="form-group">' + '<label for="issuesLoc">' + 'Where did you find the issue?' + '</label>' +
+                '<div class="form-group">' + '<label for="issuesLoc">' + 'Where did you find the issue?' +
+                '</label>' +
                 '<input type="text" class="form-control" id="issuesLocInput" placeholder="Location">' +
                 '</div>' +
                 `<div class="form-group">
-                <label for="issuesCom">Comments</label>
-                <textarea class="form-control" placeholder="Any Comments?" id="issuesComInput" rows="3"></textarea>
-                </div>` +
+                        <label for="issuesCom">Comments</label>
+                        <textarea class="form-control" placeholder="Any Comments?" id="issuesComInput" rows="3"></textarea>
+                        </div>` +
                 '<div class="form-group">' + '<label for="issueStat">' + 'Status of the issue?' + '</label>' +
                 '<input type="text" class="form-control" id="issueStatInput" placeholder="Status">' +
                 '</div>' +
@@ -55,6 +56,33 @@
               var btn = document.getElementById("submitBtn");
               btn.className = "btn btn-primary";
               btn.innerHTML = "Save";
+            }
+
+            function loadView(data) {
+              document.getElementById("tbody").innerHTML +=
+                "<tr>" +
+                "<td>" +
+                data._id +
+                "</td><td>" +
+                data.name +
+                "</td><td>" +
+                data.type +
+                "</td><td>" +
+                data.description +
+                "</td><td>" +
+                data.location +
+                "</td><td>" +
+                data.comments +
+                "</td><td>" +
+                data.status +
+                "</td>" +
+                `<td>
+                <div id="data-id-${data._id}" class="btn-group" role="group" aria-label="edit/delete button">
+                <button type="button" class="btn btn-secondary" onclick="editIssue(${data._id})" data-toggle="modal" data-target="#editModal">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteIssue(${data._id})" data-toggle="modal" data-target="#editModal">Delete</button>
+                </td>
+                </div>
+                </tr>`;
             }
           </script>
           ...
