@@ -80,7 +80,6 @@ async function editIssue() {
   issues.edit(editedIssue); //will pass the new issue to the edit method
 }
 async function deleteIssue(param) {
-  console.log("deleted");
   document.getElementById("editModalTitle").innerHTML = "Warning";
   document.getElementById(
     "modalInfo"
@@ -88,9 +87,10 @@ async function deleteIssue(param) {
   let del = document.getElementById("submitBtn");
   del.className = "btn btn-danger";
   del.innerHTML = "Delete";
-  del.onclick = function() {
-    console.log(`"${param}"`);
-    cdb.deleteDoc(`"${param}"`);
+  del.onclick = await function() {
+    let param2 = param.toString();
+    console.log(param2);
+    cdb.deleteDoc(param2);
     // location.reload();
   };
 }

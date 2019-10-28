@@ -93,7 +93,11 @@ class clientDB {
   deleteDoc(id) {
     /** @param {String} revID id by pouchDB */
     let revID = this.getRevID(id);
+    console.log(revID);
+    
     this.db.remove(id, revID, function(err) {
+      console.log(err);
+      
       if (err) {
         return console.log(err);
       } else {
@@ -110,11 +114,15 @@ class clientDB {
    */
   getRevID(id) {
     this.db.get(id, function(err, doc) {
+      console.log(doc);
       if (err) {
         return console.log(err);
       } else {
        return doc._rev;
       }
     });
+  }
+  checker(){
+    
   }
 }
