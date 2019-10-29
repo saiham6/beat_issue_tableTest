@@ -112,18 +112,12 @@ class clientDB {
    * Returns the Documents revID given by pouchDB
    * @param {String} id primary key for finding document
    */
-  async getRevID(id) {
+  getRevID(id) {
     var too;
-    var hoo = cdb.db.get(id);
-    await hoo.then(
-      function(v) {
-        too = v._rev; // "fulfilled!"
-      },
-      function(e) {
-        console.log(e);
-      }
-    );
-    console.log(too);
+    this.db.get(id).then((v)=>{
+      too = v._rev; // "fulfilled!"
+      console.log(too);
+    })
   }
   // getRevID(id) {
   //   return this.db.get(id, function(err, doc) {
