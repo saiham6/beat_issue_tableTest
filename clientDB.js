@@ -90,19 +90,14 @@ class clientDB {
    * Deletes a document from database using id and revID
    * @param {String} id primary key
    */
-  async deleteDoc(id) {
-    /** @param {String} revID id by pouchDB */
-    let revID = await this.getRevID(id);
-    console.log(revID);
-
-    this.db.remove(id, revID, function(err) {
+  deleteDoc(id) {
+    let instance = this;
+    this.db.get(id).then(function(doc) {
+      return instance.db.remove(doc._id, doc._rev);
+    }).then(function (result) {
+      console.log(result);
+    }).catch(function (err) {
       console.log(err);
-
-      if (err) {
-        return console.log(err);
-      } else {
-        console.log("Document deleted successfully");
-      }
     });
   }
 
@@ -119,14 +114,5 @@ class clientDB {
       console.log(too);
     })
   }
-  // getRevID(id) {
-  //   return this.db.get(id, function(err, doc) {
-  //     if (err) {
-  //       return console.log(err);
-  //     } else {
-  //       return doc._rev.toString();
-  //     }
-  //   });
-  // }
   checker() {}
 }

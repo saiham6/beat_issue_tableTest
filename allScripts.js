@@ -24,7 +24,7 @@ async function init() {
 }
 init();
 
-async function addIssue() {
+function addIssue() {
   document.getElementById("editModalTitle").innerHTML =
     "Please input what you want to ADD";
   generateForm();
@@ -45,7 +45,7 @@ async function addIssue() {
   };
 }
 
-async function editIssue() {
+function editIssue() {
   document.getElementById("editModalTitle").innerHTML =
     "Please input what you want to EDIT";
   generateForm();
@@ -54,7 +54,7 @@ async function editIssue() {
   editedIssue = issues.get(/*Id to be sent here*/);
   issues.edit(editedIssue); //will pass the new issue to the edit method
 }
-async function deleteIssue(param) {
+function deleteIssue(param) {
   document.getElementById("editModalTitle").innerHTML = "Warning";
   document.getElementById(
     "modalInfo"
@@ -62,10 +62,10 @@ async function deleteIssue(param) {
   let del = document.getElementById("submitBtn");
   del.className = "btn btn-danger";
   del.innerHTML = "Delete";
-  del.onclick = await function() {
+  del.onclick = function() {
     let param2 = param.toString();
     console.log(param2);
     cdb.deleteDoc(param2);
-    // location.reload();
+    location.reload();
   };
 }
