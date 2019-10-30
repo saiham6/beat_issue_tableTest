@@ -49,7 +49,6 @@ function editIssue() {
   document.getElementById("editModalTitle").innerHTML =
     "Please input what you want to EDIT";
   generateForm();
-  
 }
 function deleteIssue(param) {
   document.getElementById("editModalTitle").innerHTML = "Warning";
