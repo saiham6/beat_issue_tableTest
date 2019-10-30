@@ -95,24 +95,11 @@ class clientDB {
     this.db.get(id).then(function(doc) {
       return instance.db.remove(doc._id, doc._rev);
     }).then(function (result) {
-      console.log(result);
+      console.log("Delete Successful");
     }).catch(function (err) {
       console.log(err);
     });
   }
 
   // TODO: Helpers
-
-  /**
-   * Returns the Documents revID given by pouchDB
-   * @param {String} id primary key for finding document
-   */
-  getRevID(id) {
-    var too;
-    this.db.get(id).then((v)=>{
-      too = v._rev; // "fulfilled!"
-      console.log(too);
-    })
-  }
-  checker() {}
 }

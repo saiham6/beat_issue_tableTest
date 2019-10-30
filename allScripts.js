@@ -50,7 +50,7 @@ function editIssue() {
     "Please input what you want to EDIT";
   generateForm();
   let issues = new Issues();
-  await issues.getIssuesFromFile();
+  issues.getIssuesFromFile();
   editedIssue = issues.get(/*Id to be sent here*/);
   issues.edit(editedIssue); //will pass the new issue to the edit method
 }
