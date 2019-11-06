@@ -28,13 +28,14 @@ class clientDB {
    * @param {String} id primary key
    */
   getByID(id) {
-    this.db.get(id, function(err, doc) {
-      if (err) {
-        return console.log(err);
-      } else {
-        console.log(doc);
-      }
-    });
+    return this.db
+      .get(id)
+      .then(function(doc) {
+        return doc;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
   /**
    * Returns all the documents stored in pouchDB
@@ -92,13 +93,17 @@ class clientDB {
    */
   deleteDoc(id) {
     let instance = this;
-    this.db.get(id).then(function(doc) {
-      return instance.db.remove(doc._id, doc._rev);
-    }).then(function (result) {
-      console.log("Delete Successful");
-    }).catch(function (err) {
-      console.log(err);
-    });
+    this.db
+      .get(id)
+      .then(function(doc) {
+        return instance.db.remove(doc._id, doc._rev);
+      })
+      .then(function(result) {
+        console.log("Delete Successful");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   // TODO: Helpers

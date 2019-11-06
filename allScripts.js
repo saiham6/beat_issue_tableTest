@@ -45,10 +45,33 @@ function addIssue() {
   };
 }
 
-function editIssue() {
+async function editIssue(param) {
   document.getElementById("editModalTitle").innerHTML =
     "Please input what you want to EDIT";
   generateForm();
+  param = param.toString();
+  let obj = await cdb.getByID(param);
+  document.getElementById("issueIdInput").value = obj._id;
+  document.getElementById("issueNameInput").value = obj.name;
+  document.getElementById("issueTypeInput").value = obj.type;
+  document.getElementById("issuesDesInput").value = obj.description;
+  document.getElementById("issuesLocInput").value = obj.location;
+  document.getElementById("issuesComInput").value = obj.comments;
+  document.getElementById("issueStatInput").value = obj.status;
+  document.getElementById("submitBtn").onclick = function() {
+    let issue = {
+      _id: document.getElementById("issueIdInput").value,
+      name: document.getElementById("issueNameInput").value,
+      type: document.getElementById("issueTypeInput").value,
+      description: document.getElementById("issuesDesInput").value,
+      location: document.getElementById("issuesLocInput").value,
+      comments: document.getElementById("issuesComInput").value,
+      status: document.getElementById("issueStatInput").value
+    };
+    cdb.pushData(issue);
+    // location.reload();
+    // init();
+  };
 }
 function deleteIssue(param) {
   document.getElementById("editModalTitle").innerHTML = "Warning";
